@@ -1,0 +1,13 @@
+--add this in the block that must teleport the player
+--replace destination Block name from "PartB" to something else.
+local teleportPart = script.Parent
+local destination = workspace.PartB
+
+teleportPart.Touched:Connect(function(hit)
+	local character = hit.Parent
+	local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+
+	if humanoidRootPart then
+		humanoidRootPart.CFrame = destination.CFrame + Vector3.new(0, 3, 0)
+	end
+end)
